@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+
 int ins=0;
 
 void insertSort(int x[],int n){
@@ -33,26 +34,46 @@ void preencherVetor(int x[],int n)
     }
 }
 
+void inserirValorVetor(int x[],int valor)
+{
+    if(ins<20)
+    {
+        x[ins]=valor;
+        ins++;
+    }
+    else
+    {
+        printf("Não é possivel inserir mais valores no vetor.\n");
+    }
+}
+
 int main()
 {
     int vetor[20];
     int n;
     int op;
     do{
-        printf("1-ordenar o vetor\n");
+        printf("###########################\n######### MENU ############\n###########################\n");
+        printf("1-Inserir dados no vetor\n");
         printf("2-imprimir o vetor\n");
         printf("3-preencher o vetor automaticamente\n");
         printf("0-sair\n");
         scanf("%i",&op);
+        system("clear");
         switch(op){
-            case 1: //printf("valor a ser inserido\n");
-                    //scanf("%i",&n);
+            case 1: printf("valor a ser inserido\n");
+                    scanf("%i",&n);
+                    inserirValorVetor(vetor,n);
                     insertSort(vetor,ins);
                     break;
-            case 2: imprimeVetor(vetor,ins);
+            case 2: printf("Imprimindo Vetor ordenado\n");
+                    imprimeVetor(vetor,ins);
                     break;
-            case 0: break;
-            case 3: preencherVetor(vetor,20);
+            case 0: printf("Saindo...");
+                    break;
+            case 3: printf("Inserindo dados no Vetor automaticamente\n");
+                    preencherVetor(vetor,20);
+                    insertSort(vetor,ins);
                     break;
             default: op=-1;
                      printf("Selecione uma opção válida\n");
